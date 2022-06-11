@@ -5,6 +5,7 @@ import "../Global"
 
 Item {
     id: root
+    anchors.fill: parent
     readonly property var currentGameCollection: gameData ? gameData.collections.get(0) : ""
     readonly property var currentGameCollectionAltColor:{
         if (accentColorNr != 0) {
@@ -46,7 +47,7 @@ Item {
 
     // In order to use the retropie icons here we need to do a little collection specific hack
     readonly property bool playVideo: gameData ? gameData.assets.videoList.length : ""
-    scale: selected ? 1 : 0.95
+    //scale: selected ? 1 : 0.95
     Behavior on scale { NumberAnimation { duration: 100 } }
     z: selected ? 10 : 1
 
@@ -78,10 +79,29 @@ Item {
         GameVideo {
             game: gameData
             anchors.fill: parent
-            playing: selected && homeVideo != "No"
-            scale: selected ? 1.1 : 1
-            sound: homeVideoMute
+//            anchors {
+//                top: parent.top
+//                bottom: parent.bottom
+//            }
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.leftMargin: vpx(97)
+            //anchors.leftMargin: vpx(0)
+            anchors.topMargin: vpx(10)
+            anchors.rightMargin: vpx(10)
+            //width: vpx(600)
+            //height: vpx(400)
+            anchors.bottomMargin: vpx(100)
 
+            playing: selected && homeVideo != "No"
+            //scale: selected ? 1.1 : 1
+            //scale: selected ? 1 : 1
+            sound: homeVideoMute
+            //width: container.paintedWidth
+            //height: container.paintedHeight
+            //width: 400
+            //height: 300
         }
 
         Image {
@@ -93,24 +113,24 @@ Item {
             sourceSize: Qt.size(screenshot.width, screenshot.height)
             smooth: false
             asynchronous: true
-            scale: selected ? 1.1 : 1
+            //scale: selected ? 1.1 : 1
             visible: gameData.assets.marquee && !doubleFocus
             Behavior on opacity { NumberAnimation { duration: 200 } } 
         }
 
-        DropShadow {
-            anchors.fill: parent
-            horizontalOffset: 0
-            verticalOffset: 5
-            radius: 20
-            samples: 20
-            color: "#000000"
-            source: marquee
-            opacity: visible ? 0.5 : 0
-            visible: gameData.assets.marquee && !doubleFocus
-            Behavior on opacity { NumberAnimation {duration: 200 } }
-            z: -5
-        }
+//        DropShadow {
+//            anchors.fill: parent
+//            horizontalOffset: 0
+//            verticalOffset: 5
+//            radius: 20
+//            samples: 20
+//            color: "#000000"
+//            source: marquee
+//            opacity: visible ? 0.5 : 0
+//            visible: gameData.assets.marquee && !doubleFocus
+//            Behavior on opacity { NumberAnimation {duration: 200 } }
+//            z: -5
+//        }
 
         Image {
             id: screenshot
@@ -122,9 +142,9 @@ Item {
             sourceSize: Qt.size(screenshot.width, screenshot.height)
             smooth: false
             asynchronous: true
-            scale: selected ? 1.1 : 1
+            //scale: selected ? 1.1 : 1
             visible: !gameData.assets.marquee || doubleFocus
-            Behavior on opacity { NumberAnimation { duration: 200 } } 
+            Behavior on opacity { NumberAnimation { duration: 200 } }
         }
 
         Image {
@@ -139,26 +159,26 @@ Item {
             fillMode: Image.PreserveAspectFit
             asynchronous: true
             smooth: true
-            scale: selected ? 1.1 : 1
+            //scale: selected ? 1.1 : 1
             visible: !gameData.assets.marquee || doubleFocus
             Behavior on scale { NumberAnimation { duration: 100 } }
             z: 10
         }
 
-        Rectangle {
-        id: regborder
+//        Rectangle {
+//        id: regborder
 
-            anchors.fill: parent
-            color: "transparent"
-            anchors.rightMargin: 1
-            anchors.leftMargin: 1
-            anchors.bottomMargin: 1
-            anchors.topMargin: 1
-            border.width: vpx(3)
-            border.color: colorScheme[theme].secondary
-            opacity: 0.5
-            scale: selected ? 1.1 : 1
-        }
+//            anchors.fill: parent
+//            color: "transparent"
+//            anchors.rightMargin: 1
+//            anchors.leftMargin: 1
+//            anchors.bottomMargin: 1
+//            anchors.topMargin: 1
+//            border.width: vpx(3)
+//            border.color: colorScheme[theme].secondary
+//            opacity: 0.5
+//            scale: selected ? 1.1 : 1
+//        }
         
     }
 
@@ -179,14 +199,14 @@ Item {
         visible: model.assets.logo === ""
         
     }
-        Rectangle {
-        anchors.fill: parent
-        color: "transparent"
-        border {
-            width: vpx(5)
-            color: currentGameCollectionAltColor
-        }
-        scale: selected ? 1.1 : 1
-        visible: selected
-    }  
+//        Rectangle {
+//        anchors.fill: parent
+//        color: "transparent"
+//        border {
+//            width: vpx(5)
+//            color: currentGameCollectionAltColor
+//        }
+//        scale: selected ? 1.1 : 1
+//        visible: selected
+//    }
 }
