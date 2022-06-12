@@ -130,6 +130,7 @@ FocusScope {
         Item {
             width: parent.width
             height: vpx(602)
+            //width: vpx(742)
 
             opacity: (lastplayed_left.focus || lastplayed_right.focus) ? 1 : 0.5
 
@@ -156,10 +157,12 @@ FocusScope {
             Item {
                 anchors {
                     top: parent.top
-                    topMargin: vpx(81)
+                    bottom: parent.bottom
+                    topMargin: vpx(91)
+                    //bottomMargin: vpx(480)
                     //leftMargin: vpx(300)
                     //rightMargin: vpx(300)
-                    left: vpx(200)
+                    leftMargin: vpx(200)
                 }
 
                 // Big field
@@ -174,7 +177,7 @@ FocusScope {
     //                }
     //                anchors.left: vpx(120)
 
-                    width: vpx(600)//parent.width * 0.15
+                    width: vpx(640)//parent.width * 0.15
                     height: vpx(480)
                     //anchors.left: vpx(200)
 

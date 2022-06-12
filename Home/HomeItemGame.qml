@@ -76,32 +76,24 @@ Item {
         anchors.fill: parent
         Behavior on opacity { NumberAnimation { duration: 200 } }
 
+        anchors {
+            topMargin: vpx(0)
+            leftMargin: vpx(97)
+            rightMargin: vpx(50)
+            bottomMargin: vpx(100)
+        }
+
+        //width: vpx(600)
+        //height: vpx(400)
+
         GameVideo {
             game: gameData
             anchors.fill: parent
-//            anchors {
-//                top: parent.top
-//                bottom: parent.bottom
-//            }
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.left: parent.left
-            anchors.leftMargin: vpx(97)
-            //anchors.leftMargin: vpx(0)
-            anchors.topMargin: vpx(10)
-            anchors.rightMargin: vpx(10)
-            //width: vpx(600)
-            //height: vpx(400)
-            anchors.bottomMargin: vpx(100)
-
             playing: selected && homeVideo != "No"
-            //scale: selected ? 1.1 : 1
-            //scale: selected ? 1 : 1
+            scale: 0.98
             sound: homeVideoMute
             //width: container.paintedWidth
             //height: container.paintedHeight
-            //width: 400
-            //height: 300
         }
 
         Image {
